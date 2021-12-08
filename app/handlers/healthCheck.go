@@ -5,5 +5,5 @@ import (
 )
 
 func GetServiceStatus(w http.ResponseWriter, r *http.Request) {
-	respondJSON(w, http.StatusOK, "Service running")
+	respondJSON(w, http.StatusOK, "Service up and running")
 }

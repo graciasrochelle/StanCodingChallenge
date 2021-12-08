@@ -1,14 +1,13 @@
 package app
 
 import (
+	handler "StanCodingChallenge/app/handlers"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"StanCodingChallenge/app/handler"
 )
 
-// App has router
 type App struct {
 	Router *mux.Router
 }
@@ -36,7 +35,7 @@ func (a *App) Post(path string, f func(w http.ResponseWriter, r *http.Request)) 
 
 // Run the app on it's router
 func (a *App) Run(host string) {
-	log.Fatal(http.ListenAndServe(host, a.Router))
+	log.Panic(http.ListenAndServe(host, a.Router))
 }
 
 type RequestHandlerFunction func(w http.ResponseWriter, r *http.Request)
