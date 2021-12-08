@@ -15,7 +15,8 @@ type App struct {
 // setRouters sets the all required routers
 func (a *App) setRouters() {
 	// Routing for handling the projects
-	a.Get("/healthcheck", a.handleRequest(handler.GetServiceStatus))
+	a.Get("/", a.handleRequest(handler.GetServiceStatus))
+	a.Post("/items", a.handleRequest(handler.PostItems))
 }
 
 func (a *App) Initialize() {
