@@ -25,8 +25,8 @@ func PostItems(w http.ResponseWriter, r *http.Request) {
 	respondJSON(w, http.StatusOK, getResponse(request))
 }
 
-func getResponse(values model.Request) []model.ResponseItem {
-	var response []model.ResponseItem
+func getResponse(values model.Request) model.Response {
+	var response model.Response
 	for _, value := range values.Items {
 		if value.DRM && value.EpisodeCount > 0 {
 			resp := model.ResponseItem{
@@ -34,8 +34,9 @@ func getResponse(values model.Request) []model.ResponseItem {
 				Title: value.Title,
 				Slug:  value.Slug,
 			}
-			response = append(response, resp)
+			response.Items = append(response.Items, resp)
 		}
 	}
+
 	return response
 }
