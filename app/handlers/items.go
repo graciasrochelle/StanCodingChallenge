@@ -17,7 +17,7 @@ func PostItems(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if len(request.Items) <= 0 {
+	if len(request.Payload) <= 0 {
 		respondError(w, http.StatusBadRequest, "Could not decode request: JSON parsing failed")
 		return
 	}
@@ -27,14 +27,14 @@ func PostItems(w http.ResponseWriter, r *http.Request) {
 
 func getResponse(values model.Request) model.Response {
 	var response model.Response
-	for _, value := range values.Items {
+	for _, value := range values.Payload {
 		if value.DRM && value.EpisodeCount > 0 {
 			resp := model.ResponseItem{
 				Image: value.Image.ShowImage,
 				Title: value.Title,
 				Slug:  value.Slug,
 			}
-			response.Items = append(response.Items, resp)
+			response.Response = append(response.Response, resp)
 		}
 	}
 

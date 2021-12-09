@@ -1,7 +1,7 @@
 package model
 
 type Request struct {
-	Items []RequestItem `json:"payload"`
+	Payload []RequestItem `json:"payload"`
 }
 
 type RequestItem struct {
